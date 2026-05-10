@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Untitled</title>
+    <link rel="stylesheet" href="./style.css">
+
+  </head>
+    
+  <body>
+  <!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>College of Basic Sciences &amp; Humanities — RPCAU, Pusa</title>
+  <meta name="description" content="College of Basic Sciences &amp; Humanities, Dr. Rajendra Prasad Central Agricultural University, Pusa, Samastipur – 848125, Bihar. Est. November 1981." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,900;1,600&family=Lato:wght@300;400;700;900&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ======================================================
+       LOADING OVERLAY
+  ====================================================== -->
+   <div id="loading-overlay" class="loading-overlay" aria-hidden="true">
+    <div class="loader-inner">
+      <img
+        src="https://rpcau.ac.in/wp-content/uploads/2023/03/Logo-gif-formattransparent-background.gif"
+        alt="RPCAU Logo"
+        class="loader-gif"
+      />
+      <p class="loader-college">College of Basic Sciences &amp; Humanities</p>
+      <p class="loader-univ">Dr. Rajendra Prasad Central Agricultural University · Pusa</p>
+      <div class="loader-bar"><div class="loader-bar-fill"></div></div>
+    </div>
+  </div>
+
+
+  <!-- BACK TO TOP -->
+  <button id="back-to-top" class="back-to-top" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+      <polyline points="18 15 12 9 6 15"></polyline>
+    </svg>
+  </button>
+
+  <!-- ======================================================
+       NAVBAR
+  ====================================================== -->
+<header id="navbar" class="navbar" role="banner">
+    <div class="nav-container">
+      <!-- Logo -->
+      <a href="#home" class="nav-logo" aria-label="CBSH RPCAU Home">
+        <div class="logo-badge">
+          <img src="https://rpcau.ac.in/wp-content/uploads/2023/03/Logo-gif-formattransparent-background.gif" alt="CBSH RPCAU Logo" class="logo-img" />
+        </div>
+        <div class="logo-text">
+          <span class="logo-main">CBSH · RPCAU</span>
+          <span class="logo-sub">College of Basic Sciences &amp; Humanities, Pusa</span>
+        </div>
+      </a>
+
+      <!-- Desktop nav links -->
+      <nav class="nav-links" role="navigation" aria-label="Main navigation">
+        <a href="#home"          class="nav-link active">Home</a>
+        <a href="#about"         class="nav-link">About</a>
+        <a href="#departments"   class="nav-link">Depts</a>
+        <a href="#notes"         class="nav-link">Notes</a>
+        <a href="#gallery"       class="nav-link">Gallery</a>
+        <a href="#notifications" class="nav-link">Notices <span class="nav-badge" id="nav-notif-badge">4</span></a>
+        <a href="#faculty"       class="nav-link">Faculty</a>
+        <a href="#contact"       class="nav-link">Contact</a>
+      </nav>
+      <!-- Right controls: dark-mode + hamburger -->
+      <div class="nav-controls">
+        <button class="dark-toggle" id="dark-toggle" aria-label="Toggle dark mode" title="Toggle dark / light mode">
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+    <!-- Mobile drawer -->
+    <div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Mobile navigation">
+      <nav class="mobile-nav">
+        <a href="#home"          class="mobile-link">🏠 Home</a>
+        <a href="#about"         class="mobile-link">ℹ️ About</a>
+        <a href="#departments"   class="mobile-link">🔬 Departments</a>
+        <a href="#notes"         class="mobile-link">📚 Notes</a>
+        <a href="#gallery"       class="mobile-link">🖼️ Gallery</a>
+        <a href="#notifications" class="mobile-link">🔔 Notifications</a>
+        <a href="#faculty"       class="mobile-link">👨‍🏫 Faculty</a>
+        <a href="#contact"       class="mobile-link">✉️ Contact</a>
+      </nav>
+      <div class="mobile-dark-row">
+        <span>Dark Mode</span>
+        <button class="dark-toggle dark-toggle--mobile" id="dark-toggle-mobile" aria-label="Toggle dark mode">
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ======================================================
+         HERO
+    ====================================================== -->
+    <section id="home" class="hero" aria-label="Hero">
+      <div class="hero-media">
+        <img
+          src="https://raw.githubusercontent.com/BONGCODER7/biotechnology/refs/heads/main/photo/Screenshot%202026-05-05%20at%2020-06-42%20College%20of%20Basic%20Sciences%20%26%20Humanities%20-%20Dr.%20Rajendra%20Prasad%20Central%20Agricultural%20University.png"
+          alt="RPCAU Pusa campus"
+          class="hero-img"
+          loading="eager"
+        />
+        <div class="hero-overlay"></div>
+        <!-- Decorative pattern -->
+        <div class="hero-pattern" aria-hidden="true"></div>
+      </div>
+
+      <div class="hero-content">
+        <div class="hero-eyebrow">
+          <span class="hero-dot"></span>
+          Est. November 1981 &nbsp;&nbsp;·&nbsp;&nbsp; Institution of National Importance, Govt. of India
+        </div>
+        <h1 class="hero-title">
+          Cultivating Science,<br />
+          <em>Advancing Agriculture</em>
+        </h1>
+        <p class="hero-subtitle">
+          College of Basic Sciences &amp; Humanities — nurturing researchers, scientists, and innovators
+          at Dr. Rajendra Prasad Central Agricultural University, Pusa, Bihar since 1981.
+        </p>
+        <div class="hero-actions">
+          <a href="#notes"       class="btn btn--gold">📚 Explore Notes</a>
+          <a href="#departments" class="btn btn--outline">Our Departments</a>
+        </div>
+
+        <!-- Quick stats strip -->
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <span class="hero-stat-num">44+</span>
+            <span class="hero-stat-label">Years</span>
+          </div>
+          <div class="hero-stat-divider"></div>
+          <div class="hero-stat">
+            <span class="hero-stat-num">4</span>
+            <span class="hero-stat-label">Departments</span>
+          </div>
+          <div class="hero-stat-divider"></div>
+          <div class="hero-stat">
+            <span class="hero-stat-num">35+</span>
+            <span class="hero-stat-label">Faculty</span>
+          </div>
+          <div class="hero-stat-divider"></div>
+          <div class="hero-stat">
+            <span class="hero-stat-num">NAAC</span>
+            <span class="hero-stat-label">Accredited</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-scroll" aria-hidden="true">
+        <div class="scroll-mouse">
+          <div class="scroll-wheel"></div>
+        </div>
+        <span class="scroll-label">Scroll</span>
+      </div>
+    </section>
+
+    <!-- ======================================================
+         NOTIFICATIONS
+    ====================================================== -->
+    <section id="notifications" class="section section--notifications" aria-labelledby="notif-heading">
+      <div class="container">
+
+        <div class="urgent-banner" role="alert" aria-live="polite">
+          <span class="urgent-label">🔴 LIVE</span>
+          <div class="marquee-wrapper">
+            <div class="marquee-track" id="marquee-track">
+              <span>📢 GAT-B qualified students: Admissions open for M.Sc.(Ag.) Molecular Biology &amp; Biotechnology 2025–26 &nbsp;|&nbsp;</span>
+              <span>🎓 4th Convocation of RPCAU — Final year students must register before deadline &nbsp;|&nbsp;</span>
+              <span>📝 Walk-in-Interview for Teaching Positions — See official notification for details &nbsp;|&nbsp;</span>
+              <span>🏆 RPCAU 54th Foundation Day Celebration — All faculty and students invited &nbsp;|&nbsp;</span>
+              <span>📢 GAT-B qualified students: Admissions open for M.Sc.(Ag.) Molecular Biology &amp; Biotechnology 2025–26 &nbsp;|&nbsp;</span>
+              <span>🎓 4th Convocation of RPCAU — Final year students must register before deadline &nbsp;|&nbsp;</span>
+              <span>📝 Walk-in-Interview for Teaching Positions — See official notification for details &nbsp;|&nbsp;</span>
+              <span>🏆 RPCAU 54th Foundation Day Celebration — All faculty and students invited &nbsp;|&nbsp;</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-header">
+          <div class="section-tag">Official Notices</div>
+          <h2 id="notif-heading" class="section-title">Notifications &amp; Announcements</h2>
+          <p class="section-subtitle">Stay updated with the latest news, circulars, and official notices from CBSH and RPCAU.</p>
+        </div>
+
+        <div class="filter-tabs" role="tablist" aria-label="Notification filter tabs">
+          <button class="filter-tab active" data-filter="all"       role="tab" aria-selected="true">All</button>
+          <button class="filter-tab"        data-filter="exam"      role="tab" aria-selected="false">Exams</button>
+          <button class="filter-tab"        data-filter="admission" role="tab" aria-selected="false">Admissions</button>
+          <button class="filter-tab"        data-filter="event"     role="tab" aria-selected="false">Events</button>
+          <button class="filter-tab"        data-filter="general"   role="tab" aria-selected="false">General</button>
+        </div>
+
+        <div class="notif-grid" id="notif-grid" role="list"></div>
+
+      </div>
+    </section>
+
+    <!-- ======================================================
+         ABOUT
+    ====================================================== -->
+    <section id="about" class="section section--about" aria-labelledby="about-heading">
+      <div class="container about-grid">
+
+        <div class="about-visual reveal">
+          <img
+            src="https://raw.githubusercontent.com/BONGCODER7/biotechnology/refs/heads/main/photo/WhatsApp%20Image%202026-05-07%20at%2011.34.28%20PM.jpeg"
+            alt="CBSH Building, RPCAU Pusa"
+            class="about-img"
+            loading="lazy"
+          />
+          <div class="about-badge">
+            <span class="about-badge-num">44+</span>
+            <span class="about-badge-lbl">Years of Excellence</span>
+          </div>
+          <div class="about-img-accent" aria-hidden="true"></div>
+        </div>
+
+        <div class="about-content reveal">
+          <div class="section-tag">Who We Are</div>
+          <h2 id="about-heading" class="section-title section-title--left">
+            A Legacy of Scientific<br /><em>Excellence at Pusa</em>
+          </h2>
+          <p class="about-text">
+            The <strong>College of Basic Sciences and Humanities (CBSH)</strong> was established at
+            Dr. Rajendra Prasad Central Agricultural University (formerly RAU), Pusa in
+            <strong>November 1981</strong> with the objective to strengthen teaching and research
+            in basic sciences integral to agriculture.
+          </p>
+          <p class="about-text">
+            RPCAU is an <strong>Institution of National Importance, Government of India</strong>.
+            CBSH houses four dynamic departments offering M.Sc. (Ag.) and Ph.D. programmes, each
+            at the cutting edge of agri-science research — from molecular breeding to AI-based
+            genomic modelling.
+          </p>
+
+          <div class="about-highlights">
+            <div class="highlight-item">
+              <span class="highlight-icon">🏛️</span>
+              <span>National Importance University</span>
+            </div>
+            <div class="highlight-item">
+              <span class="highlight-icon">🔬</span>
+              <span>Active Research in 4 Departments</span>
+            </div>
+            <div class="highlight-item">
+              <span class="highlight-icon">🎓</span>
+              <span>M.Sc. (Ag.) &amp; Ph.D. Programmes</span>
+            </div>
+            <div class="highlight-item">
+              <span class="highlight-icon">🌾</span>
+              <span>ICAR-affiliated Curriculum</span>
+            </div>
+          </div>
+
+          <div class="stats-row">
+            <div class="stat-item">
+              <span class="stat-num" data-target="44">0</span><span class="stat-plus">+</span>
+              <span class="stat-label">Years</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-num" data-target="4">0</span><span class="stat-plus"></span>
+              <span class="stat-label">Departments</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-num" data-target="35">0</span><span class="stat-plus">+</span>
+              <span class="stat-label">Faculty</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-num" data-target="500">0</span><span class="stat-plus">+</span>
+              <span class="stat-label">Alumni</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======================================================
+         DEPARTMENTS
+    ====================================================== -->
+    <section id="departments" class="section section--departments" aria-labelledby="dept-heading">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag">Academic Programmes</div>
+          <h2 id="dept-heading" class="section-title section-title--white">Our Departments &amp; Thrust Areas</h2>
+          <p class="section-subtitle section-subtitle--light">
+            Four specialized departments offering M.Sc. (Ag.) and Ph.D. programmes in agricultural basic sciences.
+          </p>
+        </div>
+
+        <div class="dept-grid">
+
+          <div class="dept-card reveal">
+            <div class="dept-card-header">
+              <div class="dept-icon">🧬</div>
+              <div class="dept-num">01</div>
+            </div>
+            <h3>Agricultural Biotechnology &amp; Molecular Biology</h3>
+            <p class="dept-degree">M.Sc. (Ag.) / Ph.D.</p>
+            <ul class="dept-thrust">
+              <li>Molecular breeding for bio-fortification &amp; stress management</li>
+              <li>Gene editing for quality improvement in oilseeds &amp; pulses</li>
+              <li>Molecular speed breeding for climate-resilient genotypes</li>
+              <li>Micropropagation of medicinal &amp; ornamental plants</li>
+            </ul>
+            <div class="dept-tags">
+              <span>Bioinformatics</span>
+              <span>Gene Editing</span>
+              <span>Speed Breeding</span>
+            </div>
+          </div>
+
+          <div class="dept-card reveal">
+            <div class="dept-card-header">
+              <div class="dept-icon">🦠</div>
+              <div class="dept-num">02</div>
+            </div>
+            <h3>Microbiology</h3>
+            <p class="dept-degree">M.Sc. (Ag.) / Ph.D.</p>
+            <ul class="dept-thrust">
+              <li>Green Microbiology: Biofertilizers &amp; biocontrol agents</li>
+              <li>Organic &amp; natural farming through microbial aspects</li>
+              <li>Applied Microbiology: Enzymes, pigments &amp; acids production</li>
+              <li>Germplasm conservation &amp; microbial diversity exploration</li>
+            </ul>
+            <div class="dept-tags">
+              <span>Biocontrol</span>
+              <span>Food Microbiology</span>
+              <span>Natural Farming</span>
+            </div>
+          </div>
+
+          <div class="dept-card reveal">
+            <div class="dept-card-header">
+              <div class="dept-icon">🌿</div>
+              <div class="dept-num">03</div>
+            </div>
+            <h3>Botany, Plant Physiology &amp; Biochemistry</h3>
+            <p class="dept-degree">M.Sc. (Ag.) / Ph.D.</p>
+            <ul class="dept-thrust">
+              <li>Morpho-physiological mechanisms of abiotic stress tolerance</li>
+              <li>Metabolomics of plant stress response &amp; biochemical pathways</li>
+              <li>Biochemistry during storage to extend shelf life</li>
+              <li>Essential oils from agricultural waste &amp; their applications</li>
+            </ul>
+            <div class="dept-tags">
+              <span>Metabolomics</span>
+              <span>Abiotic Stress</span>
+              <span>Essential Oils</span>
+            </div>
+          </div>
+
+          <div class="dept-card reveal">
+            <div class="dept-card-header">
+              <div class="dept-icon">📊</div>
+              <div class="dept-num">04</div>
+            </div>
+            <h3>Statistics &amp; Computer Applications</h3>
+            <p class="dept-degree">M.Sc. (Ag.) / Ph.D.</p>
+            <ul class="dept-thrust">
+              <li>Artificial Intelligence &amp; Machine Learning in Agriculture</li>
+              <li>Big Data Analysis &amp; Data Science</li>
+              <li>Artificial Neural Networks &amp; Simulation models</li>
+              <li>Genomic modelling &amp; Experimental design for field crops</li>
+            </ul>
+            <div class="dept-tags">
+              <span>AI &amp; ML</span>
+              <span>Big Data</span>
+              <span>Genomic Modelling</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================
+         CLASS NOTES
+    ====================================================== -->
+    <section id="notes" class="section section--notes" aria-labelledby="notes-heading">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag">Study Resources</div>
+          <h2 id="notes-heading" class="section-title">Class Notes &amp; Study Material</h2>
+          <p class="section-subtitle">Download lecture notes and reference material curated by CBSH faculty across all departments.</p>
+        </div>
+
+        <div class="notes-filters">
+          <div class="search-wrap">
+            <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input type="search" id="notes-search" class="notes-search"
+              placeholder="Search subjects, topics…" aria-label="Search notes" />
+          </div>
+          <select id="notes-semester" class="notes-select" aria-label="Filter by semester">
+            <option value="all">All Semesters</option>
+            <option value="1">1st Semester</option>
+            <option value="2">2nd Semester</option>
+            <option value="3">3rd Semester</option>
+            <option value="4">4th Semester</option>
+          </select>
+          <select id="notes-dept" class="notes-select" aria-label="Filter by department">
+            <option value="all">All Departments</option>
+            <option value="AB&amp;MB">Agri. Biotechnology</option>
+            <option value="MICRO">Microbiology</option>
+            <option value="BOTANY">Botany &amp; Biochem.</option>
+            <option value="STATS">Statistics &amp; Comp.</option>
+          </select>
+        </div>
+
+        <div class="notes-grid" id="notes-grid" role="list"></div>
+        <p class="notes-empty" id="notes-empty" hidden>No notes found. Try different filters or search terms.</p>
+      </div>
+    </section>
+
+    <!-- ======================================================
+         GALLERY
+    ====================================================== -->
+    <section id="gallery" class="section section--gallery" aria-labelledby="gallery-heading">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag">Campus Life</div>
+          <h2 id="gallery-heading" class="section-title">Photo Gallery</h2>
+          <p class="section-subtitle">A glimpse of life, research, and celebrations at CBSH — RPCAU, Pusa, Bihar.</p>
+        </div>
+
+        <div class="filter-tabs gallery-filter-tabs" role="tablist" aria-label="Gallery category filters">
+          <button class="filter-tab active" data-gallery-filter="all"       role="tab" aria-selected="true">All</button>
+          <button class="filter-tab"        data-gallery-filter="campus"    role="tab" aria-selected="false">Campus</button>
+          <button class="filter-tab"        data-gallery-filter="events"    role="tab" aria-selected="false">Events</button>
+          <button class="filter-tab"        data-gallery-filter="labs"      role="tab" aria-selected="false">Labs</button>
+          <button class="filter-tab"        data-gallery-filter="research"  role="tab" aria-selected="false">Research</button>
+          <button class="filter-tab"        data-gallery-filter="classroom" role="tab" aria-selected="false">Classroom</button>
+          <button class="filter-tab"        data-gallery-filter="festivals" role="tab" aria-selected="false">Festivals</button>
+        </div>
+
+        <div class="gallery-grid" id="gallery-grid" role="list"></div>
+      </div>
+    </section>
+
+    <!-- ======================================================
+         FACULTY
+    ====================================================== -->
+    <section id="faculty" class="section section--faculty" aria-labelledby="faculty-heading">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag">Our People</div>
+          <h2 id="faculty-heading" class="section-title">Faculty Members</h2>
+          <p class="section-subtitle">Meet our dedicated researchers, educators, and scientists driving excellence at CBSH, RPCAU Pusa.</p>
+        </div>
+
+        <div class="filter-tabs faculty-filter-tabs" role="tablist" aria-label="Faculty department filter">
+          <button class="filter-tab active" data-faculty-filter="all"    role="tab" aria-selected="true">All Faculty</button>
+          <button class="filter-tab"        data-faculty-filter="AB&MB"  role="tab" aria-selected="false">Agri. Biotech.</button>
+          <button class="filter-tab"        data-faculty-filter="MICRO"  role="tab" aria-selected="false">Microbiology</button>
+          <button class="filter-tab"        data-faculty-filter="BOTANY" role="tab" aria-selected="false">Botany &amp; Biochem.</button>
+          <button class="filter-tab"        data-faculty-filter="STATS"  role="tab" aria-selected="false">Statistics</button>
+        </div>
+
+        <div class="faculty-grid" id="faculty-grid" role="list"></div>
+      </div>
+    </section>
+
+    <!-- ======================================================
+         CONTACT
+    ====================================================== -->
+    <section id="contact" class="section section--contact" aria-labelledby="contact-heading">
+      <div class="container contact-grid">
+
+        <div class="contact-info reveal">
+          <div class="section-tag">Get In Touch</div>
+          <h2 id="contact-heading" class="section-title section-title--left">
+            Connect With<br /><em>CBSH, RPCAU</em>
+          </h2>
+
+          <div class="contact-items">
+            <div class="contact-item">
+              <div class="contact-icon" aria-hidden="true">📍</div>
+              <div class="contact-detail">
+                <strong>Address</strong>
+                <p>College of Basic Sciences &amp; Humanities,<br>
+                Dr. Rajendra Prasad Central Agricultural University,<br>
+                Pusa, Samastipur – 848 125, Bihar, India</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon" aria-hidden="true">✉️</div>
+              <div class="contact-detail">
+                <strong>Dean's Office Email</strong>
+                <p><a href="mailto:dean.fbsh@rpcau.ac.in">dean.fbsh@rpcau.ac.in</a></p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon" aria-hidden="true">🌐</div>
+              <div class="contact-detail">
+                <strong>University Website</strong>
+                <p><a href="https://rpcau.ac.in" target="_blank" rel="noopener">rpcau.ac.in</a></p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon" aria-hidden="true">🕐</div>
+              <div class="contact-detail">
+                <strong>Working Hours</strong>
+                <p>Mon – Sat: 10:00 AM – 5:00 PM</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="student-connect">
+            <h4>Student Connect</h4>
+            <div class="student-links">
+              <a href="http://ecourses.iasri.res.in/" target="_blank" rel="noopener">
+                <span>📚</span> E-Krishi Sikhsha
+              </a>
+              <a href="http://www.vidyalakshmi.co.in/" target="_blank" rel="noopener">
+                <span>💰</span> Vidya Lakshmi Portal
+              </a>
+              <a href="https://rpcau.ac.in/wp-content/uploads/2024/07/Anti-Ragging.pdf" target="_blank" rel="noopener">
+                <span>🛡️</span> Anti-Ragging Policy
+              </a>
+              <a href="https://www.ugc.ac.in/grievance/" target="_blank" rel="noopener">
+                <span>⚖️</span> UGC Grievance Portal
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <form class="contact-form reveal" id="contact-form" novalidate aria-label="Send a message to CBSH">
+          <h3 class="form-title">Send Us a Message</h3>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="cf-name">Full Name</label>
+              <input type="text" id="cf-name" name="name" placeholder="Dr. / Mr. / Ms. Your Name" required />
+            </div>
+            <div class="form-group">
+              <label for="cf-email">Email Address</label>
+              <input type="email" id="cf-email" name="email" placeholder="your@email.com" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="cf-subject">Subject</label>
+            <input type="text" id="cf-subject" name="subject" placeholder="Admission / Research Query / General" />
+          </div>
+          <div class="form-group">
+            <label for="cf-message">Message</label>
+            <textarea id="cf-message" name="message" rows="5"
+              placeholder="Write your message here…" required></textarea>
+          </div>
+          <button type="submit" class="btn btn--gold btn--full">Send Message →</button>
+          <p class="form-success" id="form-success" hidden>
+            ✅ Message sent successfully! The Dean's office will respond within 2–3 working days.
+          </p>
+        </form>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ======================================================
+       FOOTER
+  ====================================================== -->
+  <footer class="footer" role="contentinfo">
+    <div class="container footer-inner">
+
+      <div class="footer-brand">
+        <div class="footer-logo-row">
+          <div class="logo-badge logo-badge--sm">
+            <svg class="logo-leaf" viewBox="0 0 32 32" fill="none">
+              <path d="M16 4 C6 4 4 16 4 24 C10 20 14 14 16 10 C18 14 22 20 28 24 C28 16 26 4 16 4Z" fill="currentColor" opacity=".9"/>
+              <line x1="16" y1="10" x2="16" y2="28" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <span class="footer-college-name">CBSH · RPCAU</span>
+        </div>
+        <p class="footer-desc">
+          College of Basic Sciences &amp; Humanities, established November 1981.
+          Part of Dr. Rajendra Prasad Central Agricultural University —
+          an Institution of National Importance, Government of India.
+        </p>
+        <div class="footer-socials">
+          <a href="https://www.facebook.com/drpcaupusa/" target="_blank" rel="noopener" class="social-btn" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </a>
+          <a href="#" class="social-btn" aria-label="Twitter/X">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+          <a href="https://rpcau.ac.in" target="_blank" rel="noopener" class="social-btn" aria-label="RPCAU Website">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-col-title">Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About CBSH</a></li>
+          <li><a href="#departments">Departments</a></li>
+          <li><a href="#notes">Study Notes</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#faculty">Faculty</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-col-title">Departments</h4>
+        <ul class="footer-links">
+          <li><a href="#">Agri. Biotechnology &amp; Mol. Bio.</a></li>
+          <li><a href="#">Microbiology</a></li>
+          <li><a href="#">Botany &amp; Plant Physiology</a></li>
+          <li><a href="#">Biochemistry</a></li>
+          <li><a href="#">Statistics &amp; Comp. Applications</a></li>
+          <li><a href="#">Bioinformatics</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-col-title">Resources</h4>
+        <ul class="footer-links">
+          <li><a href="https://rpcau.ac.in/nirf-ranking/" target="_blank" rel="noopener">NIRF Ranking</a></li>
+          <li><a href="https://rpcau.ac.in/rpcau-annual-report/" target="_blank" rel="noopener">Annual Reports</a></li>
+          <li><a href="https://rpcau.ac.in/academic-calendar/" target="_blank" rel="noopener">Academic Calendar</a></li>
+          <li><a href="https://rpcau.ac.in/placement/" target="_blank" rel="noopener">Placement Cell</a></li>
+          <li><a href="https://rpcau.ac.in/right-to-information/" target="_blank" rel="noopener">RTI</a></li>
+          <li><a href="https://rpcau.ac.in/contact-us/" target="_blank" rel="noopener">Contact RPCAU</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container footer-bottom-inner">
+        <p>© 2025 College of Basic Sciences &amp; Humanities — Dr. Rajendra Prasad Central Agricultural University, Pusa. All rights reserved.</p>
+        <p><a href="https://rpcau.ac.in" target="_blank" rel="noopener">rpcau.ac.in</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ======================================================
+       NOTIFICATION MODAL
+  ====================================================== -->
+  <div id="notif-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="notif-modal-title" hidden>
+    <div class="modal-backdrop" id="notif-modal-backdrop"></div>
+    <div class="modal-box" role="document">
+      <button class="modal-close" id="notif-modal-close" aria-label="Close notification">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+      <span class="modal-tag" id="notif-modal-tag">General</span>
+      <h3 class="modal-title" id="notif-modal-title">Notification</h3>
+      <p class="modal-meta" id="notif-modal-meta"></p>
+      <div class="modal-body" id="notif-modal-body"></div>
+      <button class="btn btn--gold" id="notif-modal-read-btn" style="margin-top:1.5rem;width:100%">
+        Mark as Read
+      </button>
+    </div>
+  </div>
+
+  <!-- ======================================================
+       NOTES MODAL
+  ====================================================== -->
+  <div id="notes-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="notes-modal-title" hidden>
+    <div class="modal-backdrop" id="notes-modal-backdrop"></div>
+    <div class="modal-box modal-box--wide" role="document">
+      <button class="modal-close" id="notes-modal-close" aria-label="Close notes preview">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+      <div class="notes-modal-header">
+        <div>
+          <span class="modal-tag" id="notes-modal-dept">DEPT</span>
+          <h3 class="modal-title" id="notes-modal-title">Subject Name</h3>
+          <p class="modal-meta" id="notes-modal-meta"></p>
+        </div>
+        <button class="btn btn--gold" id="notes-modal-dl-btn">⬇ Download PDF</button>
+      </div>
+      <div class="pdf-topbar">
+        <span id="pdf-topbar-title">📄 Module 1 Preview</span>
+        <span id="notes-modal-pages">Pages: 0</span>
+      </div>
+      <div class="notes-preview-body" id="notes-modal-content"></div>
+    </div>
+  </div>
+
+  <!-- ======================================================
+       LIGHTBOX
+  ====================================================== -->
+  <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Photo lightbox" hidden>
+    <div class="lightbox-backdrop" id="lightbox-backdrop"></div>
+    <button class="lightbox-close" id="lightbox-close" aria-label="Close lightbox">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="18" height="18">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+    <button class="lightbox-arrow lightbox-prev" id="lightbox-prev" aria-label="Previous image">&#10094;</button>
+    <button class="lightbox-arrow lightbox-next" id="lightbox-next" aria-label="Next image">&#10095;</button>
+    <figure class="lightbox-figure">
+      <img id="lightbox-img" src="" alt="" class="lightbox-img" />
+      <figcaption id="lightbox-caption" class="lightbox-caption"></figcaption>
+    </figure>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+    <script  src="./script.js"></script>
+
+  </body>
+  
+</html>
