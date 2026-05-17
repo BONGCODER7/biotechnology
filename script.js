@@ -233,9 +233,9 @@ const NOTIFICATIONS = [
 const NOTES = [
   /* ─── AB&MB Department ─── */
   { id: 'NO01', title: 'Molecular Biology — Fundamentals',     dept: 'AB&MB',  sem: 1, topic: 'DNA Structure, Replication, Transcription & Translation', date: '10 Apr 2025', pages: 68, icon: '🧬', dls: 1240,
-    driveUrl: 'https://drive.google.com/file/d/1BxiMVs0XRA5nFMdKvBdBZjgmUGDbELpB/view' },
+    driveUrl: 'https://drive.google.com/file/d/1lAuyBXS68bPR6Gx2QEEDYyH35vEdKIuA/view?usp=drive_link' },
   { id: 'NO02', title: 'Plant Biotechnology Techniques',       dept: 'AB&MB',  sem: 2, topic: 'Tissue Culture, Micropropagation, Genetic Transformation', date: '05 Apr 2025', pages: 82, icon: '🌱', dls: 980,
-    driveUrl: 'https://drive.google.com/file/d/1BxiMVs0XRA5nFMdKvBdBZjgmUGDbELpB/view' },
+    driveUrl: 'https://drive.google.com/file/d/1lR133baQujH-kF2t-G29Vyo_WdO6GM8H/view?usp=drive_link' },
   { id: 'NO03', title: 'Bioinformatics & Genomics',            dept: 'AB&MB',  sem: 3, topic: 'BLAST, Sequence Alignment, Phylogenetics, Databases', date: '01 Apr 2025', pages: 74, icon: '💻', dls: 1540,
     driveUrl: 'https://drive.google.com/file/d/1BxiMVs0XRA5nFMdKvBdBZjgmUGDbELpB/view' },
   { id: 'NO04', title: 'Gene Editing & CRISPR-Cas9',           dept: 'AB&MB',  sem: 4, topic: 'CRISPR Mechanism, Off-target Effects, Crop Improvement', date: '28 Mar 2025', pages: 56, icon: '✂️', dls: 2210,
