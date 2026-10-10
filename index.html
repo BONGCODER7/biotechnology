@@ -70,7 +70,6 @@
         <a href="#departments"   class="nav-link">Depts</a>
         <a href="#notes"         class="nav-link">Notes</a>
         <a href="#gallery"       class="nav-link">Gallery</a>
-        <a href="#notifications" class="nav-link">Notices <span class="nav-badge" id="nav-notif-badge">4</span></a>
         <a href="#faculty"       class="nav-link">Faculty</a>
         <a href="#contact"       class="nav-link">Contact</a>
       </nav>
@@ -93,7 +92,6 @@
         <a href="#departments"   class="mobile-link">🔬 Departments</a>
         <a href="#notes"         class="mobile-link">📚 Notes</a>
         <a href="#gallery"       class="mobile-link">🖼️ Gallery</a>
-        <a href="#notifications" class="mobile-link">🔔 Notifications</a>
         <a href="#faculty"       class="mobile-link">👨‍🏫 Faculty</a>
         <a href="#contact"       class="mobile-link">✉️ Contact</a>
       </nav>
@@ -172,47 +170,6 @@
           <div class="scroll-wheel"></div>
         </div>
         <span class="scroll-label">Scroll</span>
-      </div>
-    </section>
-
-    <!-- ======================================================
-         NOTIFICATIONS
-    ====================================================== -->
-    <section id="notifications" class="section section--notifications" aria-labelledby="notif-heading">
-      <div class="container">
-
-        <div class="urgent-banner" role="alert" aria-live="polite">
-          <span class="urgent-label">🔴 LIVE</span>
-          <div class="marquee-wrapper">
-            <div class="marquee-track" id="marquee-track">
-              <span>📢 GAT-B qualified students: Admissions open for M.Sc.(Ag.) Molecular Biology &amp; Biotechnology 2025–26 &nbsp;|&nbsp;</span>
-              <span>🎓 4th Convocation of RPCAU — Final year students must register before deadline &nbsp;|&nbsp;</span>
-              <span>📝 Walk-in-Interview for Teaching Positions — See official notification for details &nbsp;|&nbsp;</span>
-              <span>🏆 RPCAU 54th Foundation Day Celebration — All faculty and students invited &nbsp;|&nbsp;</span>
-              <span>📢 GAT-B qualified students: Admissions open for M.Sc.(Ag.) Molecular Biology &amp; Biotechnology 2025–26 &nbsp;|&nbsp;</span>
-              <span>🎓 4th Convocation of RPCAU — Final year students must register before deadline &nbsp;|&nbsp;</span>
-              <span>📝 Walk-in-Interview for Teaching Positions — See official notification for details &nbsp;|&nbsp;</span>
-              <span>🏆 RPCAU 54th Foundation Day Celebration — All faculty and students invited &nbsp;|&nbsp;</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="section-header">
-          <div class="section-tag">Official Notices</div>
-          <h2 id="notif-heading" class="section-title">Notifications &amp; Announcements</h2>
-          <p class="section-subtitle">Stay updated with the latest news, circulars, and official notices from CBSH and RPCAU.</p>
-        </div>
-
-        <div class="filter-tabs" role="tablist" aria-label="Notification filter tabs">
-          <button class="filter-tab active" data-filter="all"       role="tab" aria-selected="true">All</button>
-          <button class="filter-tab"        data-filter="exam"      role="tab" aria-selected="false">Exams</button>
-          <button class="filter-tab"        data-filter="admission" role="tab" aria-selected="false">Admissions</button>
-          <button class="filter-tab"        data-filter="event"     role="tab" aria-selected="false">Events</button>
-          <button class="filter-tab"        data-filter="general"   role="tab" aria-selected="false">General</button>
-        </div>
-
-        <div class="notif-grid" id="notif-grid" role="list"></div>
-
       </div>
     </section>
 
@@ -403,36 +360,56 @@
         <div class="section-header">
           <div class="section-tag">Study Resources</div>
           <h2 id="notes-heading" class="section-title">Class Notes &amp; Study Material</h2>
-          <p class="section-subtitle">Download lecture notes and reference material curated by CBSH faculty across all departments.</p>
+          <p class="section-subtitle">Explore the complete B.Tech. Biotechnology curriculum semester-wise. Find your course, access study material, and download notes directly from Google Drive.</p>
         </div>
 
-        <div class="notes-filters">
-          <div class="search-wrap">
-            <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-              <circle cx="11" cy="11" r="8"></circle>
-              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-            </svg>
-            <input type="search" id="notes-search" class="notes-search"
-              placeholder="Search subjects, topics…" aria-label="Search notes" />
+        <div id="notes-library">
+          <ul class="nl-info" aria-label="Programme information">
+            <li><span>Programme</span> B.Tech. Biotechnology</li>
+            <li><span>Duration</span> Four years</li>
+            <li><span>Structure</span> Eight semesters</li>
+            <li><span>Curriculum</span> ICAR Sixth Deans&rsquo; Committee</li>
+          </ul>
+
+          <div class="nl-nav-head">
+            <h3 class="nl-nav-title" id="notes-nav-title">Choose your semester</h3>
+            <button type="button" class="nl-link-btn" id="notes-sem-all">Show all semesters</button>
           </div>
-          <select id="notes-semester" class="notes-select" aria-label="Filter by semester">
-            <option value="all">All Semesters</option>
-            <option value="1">1st Semester</option>
-            <option value="2">2nd Semester</option>
-            <option value="3">3rd Semester</option>
-            <option value="4">4th Semester</option>
-          </select>
-          <select id="notes-dept" class="notes-select" aria-label="Filter by department">
-            <option value="all">All Departments</option>
-            <option value="AB&amp;MB">Agri. Biotechnology</option>
-            <option value="MICRO">Microbiology</option>
-            <option value="BOTANY">Botany &amp; Biochem.</option>
-            <option value="STATS">Statistics &amp; Comp.</option>
-          </select>
-        </div>
+          <div class="nl-nav" id="notes-sem-nav" role="tablist" aria-labelledby="notes-nav-title"></div>
+          <p class="nl-context" id="notes-context"></p>
 
-        <div class="notes-grid" id="notes-grid" role="list"></div>
-        <p class="notes-empty" id="notes-empty" hidden>No notes found. Try different filters or search terms.</p>
+          <div class="notes-filters">
+            <div class="search-wrap">
+              <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+              <input type="search" id="notes-search" class="notes-search" autocomplete="off"
+                placeholder="Search courses, semester, stream…" aria-label="Search courses" />
+            </div>
+            <select id="notes-category" class="notes-select" aria-label="Filter by course category">
+              <option value="all">All Categories</option>
+            </select>
+            <span id="notes-stream-wrap" hidden>
+              <select id="notes-stream" class="notes-select" aria-label="Filter by Semester VII elective stream">
+                <option value="all">All Elective Streams</option>
+              </select>
+            </span>
+            <select id="notes-avail" class="notes-select" aria-label="Filter by notes availability">
+              <option value="all">All Courses</option>
+              <option value="available">Notes Available</option>
+              <option value="soon">Notes Coming Soon</option>
+            </select>
+            <button type="button" class="nl-link-btn" id="notes-clear" hidden>Clear filters</button>
+          </div>
+
+          <p class="nl-count" id="notes-count" role="status" aria-live="polite"></p>
+          <div id="notes-grid"></div>
+          <div class="notes-empty" id="notes-empty" hidden>
+            <p>No courses match your search or filters.</p>
+            <button type="button" class="nl-btn nl-btn--ghost" id="notes-empty-clear">Clear search &amp; filters</button>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -662,56 +639,6 @@
   </footer>
 
   <!-- ======================================================
-       NOTIFICATION MODAL
-  ====================================================== -->
-  <div id="notif-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="notif-modal-title" hidden>
-    <div class="modal-backdrop" id="notif-modal-backdrop"></div>
-    <div class="modal-box" role="document">
-      <button class="modal-close" id="notif-modal-close" aria-label="Close notification">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
-          <line x1="18" y1="6" x2="6" y2="18"></line>
-          <line x1="6" y1="6" x2="18" y2="18"></line>
-        </svg>
-      </button>
-      <span class="modal-tag" id="notif-modal-tag">General</span>
-      <h3 class="modal-title" id="notif-modal-title">Notification</h3>
-      <p class="modal-meta" id="notif-modal-meta"></p>
-      <div class="modal-body" id="notif-modal-body"></div>
-      <button class="btn btn--gold" id="notif-modal-read-btn" style="margin-top:1.5rem;width:100%">
-        Mark as Read
-      </button>
-    </div>
-  </div>
-
-  <!-- ======================================================
-       NOTES MODAL
-  ====================================================== -->
-  <div id="notes-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="notes-modal-title" hidden>
-    <div class="modal-backdrop" id="notes-modal-backdrop"></div>
-    <div class="modal-box modal-box--wide" role="document">
-      <button class="modal-close" id="notes-modal-close" aria-label="Close notes preview">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
-          <line x1="18" y1="6" x2="6" y2="18"></line>
-          <line x1="6" y1="6" x2="18" y2="18"></line>
-        </svg>
-      </button>
-      <div class="notes-modal-header">
-        <div>
-          <span class="modal-tag" id="notes-modal-dept">DEPT</span>
-          <h3 class="modal-title" id="notes-modal-title">Subject Name</h3>
-          <p class="modal-meta" id="notes-modal-meta"></p>
-        </div>
-        <button class="btn btn--gold" id="notes-modal-dl-btn">⬇ Download PDF</button>
-      </div>
-      <div class="pdf-topbar">
-        <span id="pdf-topbar-title">📄 Module 1 Preview</span>
-        <span id="notes-modal-pages">Pages: 0</span>
-      </div>
-      <div class="notes-preview-body" id="notes-modal-content"></div>
-    </div>
-  </div>
-
-  <!-- ======================================================
        LIGHTBOX
   ====================================================== -->
   <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Photo lightbox" hidden>
@@ -730,10 +657,18 @@
     </figure>
   </div>
 
+  <script>
+    /* Safety net: the loading screen can never stay on screen for more than 5 seconds. */
+    setTimeout(function () {
+      var o = document.getElementById('loading-overlay');
+      if (o) o.classList.add('hidden');
+      document.body.classList.remove('locked');
+    }, 5000);
+  </script>
+  <script src="notes-data.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
-    <script  src="./script.js"></script>
 
   </body>
   
