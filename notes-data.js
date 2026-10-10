@@ -82,21 +82,47 @@ const NOTES_COURSES = [
         driveUrl: 'https://drive.google.com/file/d/1lAuyBXS68bPR6Gx2QEEDYyH35vEdKIuA/view?usp=drive_link' }
     ]
   }),
-  nc('introductory-cell-biology', 'Introductory Cell Biology', 1, 'major', '3 (3+0)'),
-  nc('fundamentals-of-genetics', 'Fundamentals of Genetics', 1, 'major', '3 (3+0)'),
+     nc('introductory-cell-biology', 'Introductory Cell Biology', 1, 'major', '3 (3+0)', {
+     resources: [
+       { id: 'cell-bio-notes', title: 'Complete Lecture Notes', type: 'notes', format: 'PDF',
+         driveUrl: 'https://drive.google.com/drive/folders/1vza7-RW_m3mGLlEbCcuH8KUuug3WgSm3?usp=sharing' }
+     ]
+   }),
+  nc('fundamentals-of-genetics', 'Fundamentals of Genetics', 1, 'major', '3 (3+0)'), {
+     resources: [
+       { id: 'genetics-notes', title: 'Complete Lecture Notes', type: 'notes', format: 'PDF',
+         driveUrl: 'https://drive.google.com/drive/folders/1Mfnnk5vN3KwSlqur3aVjQlq2UYIQ4C-O?usp=sharing' }
   nc('basic-math-botany-zoology', 'Basic Mathematics / Basic Botany / Basic Zoology', 1, 'minor', '2 (2+0)', {
     alternatives: ['Basic Mathematics', 'Basic Botany', 'Basic Zoology'],
     note: 'Alternative courses — a student takes one, as per the programme.'
-  }),
-  nc('farming-based-livelihood-systems', 'Farming Based Livelihood Systems', 1, 'mdc', '3 (2+1)'),
+  }), {
+     resources: [
+       { id: 'maths-notes', title: 'Complete Lecture Notes', type: 'notes', format: 'PDF',
+         driveUrl: 'https://drive.google.com/drive/folders/1p7FmAfPahpADnE6TwPhCpVfcNDRUYvTr?usp=sharing' }
+  nc('farming-based-livelihood-systems', 'Farming Based Livelihood Systems', 1, 'mdc', '3 (2+1)'), {
+     resources: [
+       { id: 'farming-notes', title: 'Complete Lecture Notes', type: 'notes', format: 'PDF',
+         driveUrl: 'https://drive.google.com/drive/folders/1-5XlWexljX6HvH85TZq2_qYaS_zdpWnb?usp=sharing' }
   nc('ncc-nss-1', 'National Cadet Corps I / National Service Scheme I', 1, 'aec', '1 (0+1)', {
     alternatives: ['National Cadet Corps I', 'National Service Scheme I'], note: 'Alternative courses — NCC or NSS.'
-  }),
-  nc('communication-skills', 'Communication Skills', 1, 'aec', '2 (1+1)'),
+  }), {
+     resources: [
+       { id: 'nss-notes', title: 'Complete Lecture Notes', type: 'notes', format: 'PDF',
+         driveUrl: 'https://drive.google.com/drive/folders/1yCdBjENXAtOWGvg5meZn0_7H3jvGYvK5?usp=sharing' }
+  nc('communication-skills', 'Communication Skills', 1, 'aec', '2 (1+1)'), {
+     resources: [
+       { id: 'communication-notes', title: 'Complete Lecture Notes', type: 'notes', format: 'PDF',
+         driveUrl: 'https://drive.google.com/drive/folders/1Th0l2x_ZqZ5mPlSOczWaRpkV1fS6DWD0?usp=sharing' }
   nc('sec1-tissue-animal-cell-culture', 'SEC 1: Practices in Plant Tissue Culture / Practices in Animal Cell Culture', 1, 'sec', '2 (0+2)', {
     kind: 'sec', alternatives: ['Practices in Plant Tissue Culture', 'Practices in Animal Cell Culture'], note: 'Alternative courses.'
-  }),
-  nc('sec2-lab-management', 'SEC 2: Laboratory Management and Instrumentation', 1, 'sec', '2 (0+2)', { kind: 'sec' }),
+  }), {
+     resources: [
+       { id: 'tissue-culture-notes', title: 'Complete Lecture Notes', type: 'notes', format: 'PDF',
+         driveUrl: 'https://drive.google.com/drive/folders/1c9es3WR7sj7rlF10irgrMzJK06CKLd6b?usp=sharing' }
+  nc('sec2-lab-management', 'SEC 2: Laboratory Management and Instrumentation', 1, 'sec', '2 (0+2)', { kind: 'sec' }), {
+     resources: [
+       { id: 'laboratory-notes', title: 'Complete Lecture Notes', type: 'notes', format: 'PDF',
+         driveUrl: 'https://drive.google.com/drive/folders/1qsoFrh8RIOcU9NXHYLs3KVCJJnzfYM_I?usp=sharing' }
 
   /* ───────── YEAR 1 · SEMESTER II ───────── */
   nc('introduction-to-biotechnology', 'Introduction to Biotechnology', 2, 'major', '3 (3+0)'),
