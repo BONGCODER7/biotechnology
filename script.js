@@ -3,13 +3,12 @@
  * script.js — Complete Site JavaScript
  *
  * Sections:
- *  1.  Data — Notifications, Notes, Gallery, Faculty
+ *  1.  Data — Gallery, Faculty (Notes data: notes-data.js)
  *  2.  Utilities
  *  3.  Loading Overlay
  *  4.  Navbar (sticky + hamburger)
  *  5.  Active Nav on Scroll
- *  6.  Notifications (render, filter, modal, localStorage)
- *  7.  Notes (render, search, filter, modal, favorites)
+ *  7.  Notes (semester-wise course library, search, filters, Drive resources)
  *  8.  Gallery (render, filter, lazy-load, lightbox)
  *  9.  Faculty (render, department filter)
  * 10.  Stats Counter Animation
@@ -25,249 +24,6 @@
 /* ============================================================
    1. DATA
 ============================================================ */
-
-const NOTIFICATIONS = [
-  {
-    id: 'N001',
-    title: 'M.Sc.(Ag.) Molecular Biology & Biotechnology — Admissions 2025-26',
-    category: 'admission',
-    date: '22 Apr 2025',
-    excerpt: 'GAT-B qualified students are invited to apply for the M.Sc.(Ag.) Molecular Biology & Biotechnology programme at CBSH, RPCAU Pusa for the academic session 2025-26.',
-    body: `
-      <p>Dr. Rajendra Prasad Central Agricultural University, Pusa invites applications from <strong>GAT-B qualified</strong> students for admission to the M.Sc.(Ag.) Molecular Biology and Biotechnology programme.</p>
-      <h4>Programme Details</h4>
-      <ul>
-        <li>Programme: M.Sc. (Ag.) Molecular Biology & Biotechnology</li>
-        <li>Duration: 2 Years (4 Semesters)</li>
-        <li>Department: Agricultural Biotechnology & Molecular Biology, CBSH</li>
-        <li>Intake: As per University norms</li>
-      </ul>
-      <h4>Eligibility Criteria</h4>
-      <ul>
-        <li>B.Sc. (Ag.) / B.Sc. in Life Sciences / Biotechnology with minimum 60% marks</li>
-        <li>Valid GAT-B score from the current examination cycle</li>
-        <li>Age limit: As per ICAR guidelines</li>
-      </ul>
-      <h4>How to Apply</h4>
-      <ul>
-        <li>Visit the official student portal at rpcau.ac.in</li>
-        <li>Upload GAT-B scorecard and all academic documents</li>
-        <li>Last date for application: As notified on the university portal</li>
-      </ul>
-      <p>For queries, contact the Academic Section, RPCAU Pusa or email dean.fbsh@rpcau.ac.in</p>`
-  },
-  {
-    id: 'N002',
-    title: '4th Convocation of RPCAU — Final Year Student Registration',
-    category: 'event',
-    date: '15 Apr 2025',
-    excerpt: 'The 4th Convocation of Dr. Rajendra Prasad Central Agricultural University is scheduled. All final-year students of the graduating batch must complete registration before the deadline.',
-    body: `
-      <p>The <strong>4th Convocation of RPCAU</strong> is being organized for the graduating batch. All eligible students of CBSH and other constituent colleges must register at the earliest.</p>
-      <h4>Important Details</h4>
-      <ul>
-        <li>Venue: Dr. A.P.J. Abdul Kalam Auditorium, RPCAU Campus, Pusa</li>
-        <li>Chief Guest: To be announced</li>
-        <li>Eligible: Final year students of all degree programmes</li>
-      </ul>
-      <h4>Registration Process</h4>
-      <ul>
-        <li>Submit the registration form at the Academic Section</li>
-        <li>Collect graduation robe from the Student Welfare Office</li>
-        <li>Each graduate is entitled to 2 guest passes</li>
-        <li>Carry all original mark sheets and degree certificates for verification</li>
-      </ul>
-      <p>Students with any academic dues must clear them before registration. Contact the CBSH Dean's office for CBSH-specific queries.</p>`
-  },
-  {
-    id: 'N003',
-    title: 'Walk-In-Interview for Teaching Positions — RPCAU',
-    category: 'general',
-    date: '10 Apr 2025',
-    excerpt: 'Dr. Rajendra Prasad Central Agricultural University invites applications for Walk-in-Interview for various teaching and research positions. Eligible candidates may appear as per scheduled dates.',
-    body: `
-      <p>RPCAU, Pusa is conducting Walk-in-Interviews for various teaching and research positions across its constituent colleges including CBSH.</p>
-      <h4>Available Positions</h4>
-      <ul>
-        <li>Assistant Professor — Agricultural Biotechnology & Molecular Biology</li>
-        <li>Assistant Professor — Microbiology</li>
-        <li>Senior Research Fellow (SRF) — Various departments</li>
-        <li>Young Professional-II (YP-II) — Statistics & Computer Applications</li>
-      </ul>
-      <h4>Documents Required</h4>
-      <ul>
-        <li>Updated CV / Resume with photograph</li>
-        <li>All original mark sheets and degree certificates</li>
-        <li>NET/SLET/Ph.D. certificate as applicable</li>
-        <li>Experience certificates (if any)</li>
-        <li>Government-issued Photo ID proof</li>
-      </ul>
-      <p>Candidates should report at the Directorate of Research, RPCAU Pusa at 9:30 AM on the scheduled date. No TA/DA will be paid. Visit rpcau.ac.in for full notification.</p>`
-  },
-  {
-    id: 'N004',
-    title: 'RPCAU 54th Foundation Day — Celebration at Pusa Campus',
-    category: 'event',
-    date: '02 Apr 2025',
-    excerpt: 'Dr. Rajendra Prasad Central Agricultural University celebrates its 54th Foundation Day. All faculty, students, and staff of CBSH are cordially invited to join the grand celebrations.',
-    body: `
-      <p>Dr. Rajendra Prasad Central Agricultural University, Pusa is proudly celebrating its <strong>54th Foundation Day</strong> with a series of events spanning the entire week.</p>
-      <h4>Event Schedule</h4>
-      <ul>
-        <li>Day 1: Inaugural Function & Cultural Programme</li>
-        <li>Day 2: Research Exhibition & Student Project Showcase</li>
-        <li>Day 3: Inter-college Sports & Athletic Meet</li>
-        <li>Day 4: Alumni Interaction & Career Guidance Session</li>
-        <li>Day 5: Valedictory Function & Award Ceremony</li>
-      </ul>
-      <h4>CBSH Highlights</h4>
-      <ul>
-        <li>Biotechnology Lab Open House — Students can showcase ongoing research</li>
-        <li>Best Research Poster Competition for M.Sc. & Ph.D. scholars</li>
-        <li>Science Quiz for undergraduate students</li>
-      </ul>
-      <p>All CBSH students and faculty are expected to participate enthusiastically. Contact the CBSH Dean's office for event-specific coordination.</p>`
-  },
-  {
-    id: 'N005',
-    title: 'ICSSR Two-Week Capacity Building Programme — Registration Open',
-    category: 'general',
-    date: '25 Mar 2025',
-    excerpt: 'ICSSR sponsored Two-Week Capacity Building Programme (CBP) is open for registration. Faculty members and research scholars are encouraged to apply. Limited seats available.',
-    body: `
-      <p>An <strong>ICSSR-sponsored Two-Week Capacity Building Programme</strong> is being organized. Faculty members, research scholars, and Ph.D. students are invited to participate.</p>
-      <h4>Programme Overview</h4>
-      <ul>
-        <li>Duration: 2 Weeks (Residential)</li>
-        <li>Focus: Research Methodology, Data Analysis, Academic Writing</li>
-        <li>Target Participants: Faculty & Research Scholars</li>
-        <li>Seats: Limited (First come, first served)</li>
-      </ul>
-      <h4>Benefits</h4>
-      <ul>
-        <li>Certificate from ICSSR</li>
-        <li>Free accommodation for outstation participants</li>
-        <li>Stipend as per ICSSR norms</li>
-        <li>Access to RPCAU Library and e-resources during the programme</li>
-      </ul>
-      <p>Download the brochure and application form from rpcau.ac.in. Submit your application to the Organizing Committee before the last date.</p>`
-  },
-  {
-    id: 'N006',
-    title: 'Ph.D. Entrance Test — CBSH Departments 2025',
-    category: 'exam',
-    date: '18 Mar 2025',
-    excerpt: 'Ph.D. Entrance Test for admission to doctoral programmes in CBSH departments (AB&MB, Microbiology, Botany & Biochemistry, Statistics) will be held as per the scheduled date.',
-    body: `
-      <p>CBSH, RPCAU Pusa announces the Ph.D. Entrance Test for doctoral programme admissions for the academic year 2025-26.</p>
-      <h4>Departments Offering Ph.D.</h4>
-      <ul>
-        <li>Agricultural Biotechnology & Molecular Biology</li>
-        <li>Microbiology</li>
-        <li>Botany, Plant Physiology & Biochemistry</li>
-        <li>Statistics & Computer Applications</li>
-      </ul>
-      <h4>Exam Pattern</h4>
-      <ul>
-        <li>Part A: General Aptitude & Research Methodology (50 Marks)</li>
-        <li>Part B: Subject-specific Questions (50 Marks)</li>
-        <li>Duration: 2 Hours | Mode: OMR-based offline test</li>
-      </ul>
-      <h4>Instructions</h4>
-      <ul>
-        <li>Candidates must report 30 minutes before the exam</li>
-        <li>Carry hall ticket + valid photo ID</li>
-        <li>No electronic devices permitted</li>
-      </ul>
-      <p>Admit cards will be issued 7 days before the test. Check rpcau.ac.in for updates.</p>`
-  },
-  {
-    id: 'N007',
-    title: 'Annual Sports Meet 2025 — RPCAU Pusa Campus',
-    category: 'event',
-    date: '10 Mar 2025',
-    excerpt: 'The Annual Sports Meet 2025 is scheduled at RPCAU Pusa Campus. All CBSH students are encouraged to participate in various track events, field events, and team sports.',
-    body: `
-      <p>The Physical Education Department, RPCAU announces the <strong>Annual Inter-College Sports Meet 2025</strong>.</p>
-      <h4>Events</h4>
-      <ul>
-        <li>Track: 100m, 200m, 400m, 800m, 1500m, 4×100m Relay</li>
-        <li>Field: Long Jump, High Jump, Shot Put, Discus Throw, Javelin</li>
-        <li>Team Sports: Cricket, Football, Volleyball, Kabaddi</li>
-        <li>Indoor: Badminton, Table Tennis, Chess, Carrom</li>
-      </ul>
-      <h4>Schedule</h4>
-      <ul>
-        <li>Day 1: Inauguration & Track Events</li>
-        <li>Day 2: Field Events & Team Sports (Heats)</li>
-        <li>Day 3: Finals + Prize Distribution Ceremony</li>
-      </ul>
-      <p>CBSH students must register with the college sports coordinator. Participation certificates will be awarded to all. Winners will represent RPCAU at inter-university meets.</p>`
-  },
-  {
-    id: 'N008',
-    title: 'Semester Examination Time Table — Even Semester 2025',
-    category: 'exam',
-    date: '01 Mar 2025',
-    excerpt: 'The time table for Even Semester End Examinations (2nd and 4th Semester) for M.Sc.(Ag.) and Ph.D. coursework has been published. Students are advised to check the portal.',
-    body: `
-      <p>The Examination Section, RPCAU has released the time table for <strong>Even Semester End Examinations</strong> for all M.Sc.(Ag.) and Ph.D. coursework students of CBSH.</p>
-      <h4>Examination Rules</h4>
-      <ul>
-        <li>Minimum 75% attendance is mandatory to appear in examinations</li>
-        <li>Hall tickets must be collected from the department office</li>
-        <li>No electronic devices (mobile, calculator) unless specifically permitted</li>
-        <li>Students must carry their university ID card</li>
-      </ul>
-      <h4>CBSH Department-wise Dates</h4>
-      <ul>
-        <li>AB&MB (2nd Sem): Papers scheduled in May 2025 — 1st to 3rd week</li>
-        <li>Microbiology (2nd Sem): Papers scheduled in May 2025 — 2nd to 4th week</li>
-        <li>Botany & Biochemistry (4th Sem): Papers scheduled in June 2025 — 1st week</li>
-        <li>Statistics & Comp. Applications: As per individual department schedule</li>
-      </ul>
-      <p>Detailed time table is available on the RPCAU student portal. For grievances, contact the Examination Controller's Office, RPCAU Pusa.</p>`
-  }
-];
-
-const NOTES = [
-  /* ─── AB&MB Department ─── */
-  { id: 'NO01', title: 'Molecular Biology — Fundamentals',     dept: 'AB&MB',  sem: 1, topic: 'DNA Structure, Replication, Transcription & Translation', date: '10 Apr 2025', pages: 68, icon: '🧬', dls: 1240,
-    driveUrl: 'https://drive.google.com/file/d/1lAuyBXS68bPR6Gx2QEEDYyH35vEdKIuA/view?usp=drive_link' },
-  { id: 'NO02', title: 'Plant Biotechnology Techniques',       dept: 'AB&MB',  sem: 2, topic: 'Tissue Culture, Micropropagation, Genetic Transformation', date: '05 Apr 2025', pages: 82, icon: '🌱', dls: 980,
-    driveUrl: 'https://drive.google.com/file/d/1lR133baQujH-kF2t-G29Vyo_WdO6GM8H/view?usp=drive_link' },
-  { id: 'NO03', title: 'Bioinformatics & Genomics',            dept: 'AB&MB',  sem: 3, topic: 'BLAST, Sequence Alignment, Phylogenetics, Databases', date: '01 Apr 2025', pages: 74, icon: '💻', dls: 1540,
-    driveUrl: 'https://drive.google.com/file/d/1BxiMVs0XRA5nFMdKvBdBZjgmUGDbELpB/view' },
-  { id: 'NO04', title: 'Gene Editing & CRISPR-Cas9',           dept: 'AB&MB',  sem: 4, topic: 'CRISPR Mechanism, Off-target Effects, Crop Improvement', date: '28 Mar 2025', pages: 56, icon: '✂️', dls: 2210,
-    driveUrl: 'https://drive.google.com/file/d/1BxiMVs0XRA5nFMdKvBdBZjgmUGDbELpB/view' },
-  /* ─── Microbiology Department ─── */
-  { id: 'NO05', title: 'General Microbiology',                 dept: 'MICRO',  sem: 1, topic: 'Microbial Classification, Morphology, Growth & Nutrition', date: '12 Apr 2025', pages: 72, icon: '🦠', dls: 870,
-    driveUrl: 'https://drive.google.com/file/d/1BxiMVs0XRA5nFMdKvBdBZjgmUGDbELpB/view' },
-  { id: 'NO06', title: 'Soil Microbiology & Biofertilizers',   dept: 'MICRO',  sem: 2, topic: 'Rhizobium, Azotobacter, Mycorrhiza, Biofertilizer Production', date: '08 Apr 2025', pages: 65, icon: '🌍', dls: 920,
-    driveUrl: 'https://drive.google.com/file/d/1BxiMVs0XRA5nFMdKvBdBZjgmUGDbELpB/view' },
-  { id: 'NO07', title: 'Food & Industrial Microbiology',       dept: 'MICRO',  sem: 3, topic: 'Fermentation, Food Preservation, Probiotics, Bioprocessing', date: '03 Apr 2025', pages: 78, icon: '🏭', dls: 650,
-    driveUrl: 'https://drive.google.com/file/d/1BxiMVs0XRA5nFMdKvBdBZjgmUGDbELpB/view' },
-  { id: 'NO08', title: 'Biocontrol Agents & Biopesticides',    dept: 'MICRO',  sem: 4, topic: 'Trichoderma, Bacillus, Entomopathogenic Fungi, IPM', date: '25 Mar 2025', pages: 60, icon: '🛡️', dls: 730,
-    driveUrl: 'https://drive.google.com/file/d/1BxiMVs0XRA5nFMdKvBdBZjgmUGDbELpB/view' },
-  /* ─── Botany & Biochemistry Department ─── */
-  { id: 'NO09', title: 'Plant Physiology — Unit I',            dept: 'BOTANY', sem: 1, topic: 'Water Relations, Photosynthesis, Respiration, Transpiration', date: '14 Apr 2025', pages: 88, icon: '🌿', dls: 1100,
-    driveUrl: 'https://drive.google.com/file/d/1BxiMVs0XRA5nFMdKvBdBZjgmUGDbELpB/view' },
-  { id: 'NO10', title: 'Biochemistry of Biomolecules',         dept: 'BOTANY', sem: 2, topic: 'Proteins, Carbohydrates, Lipids, Enzymes, Coenzymes', date: '09 Apr 2025', pages: 92, icon: '⚗️', dls: 1350,
-    driveUrl: 'https://drive.google.com/file/d/1BxiMVs0XRA5nFMdKvBdBZjgmUGDbELpB/view' },
-  { id: 'NO11', title: 'Stress Physiology in Crops',           dept: 'BOTANY', sem: 3, topic: 'Abiotic Stress: Drought, Salinity, Heat, Cold Tolerance', date: '04 Apr 2025', pages: 70, icon: '🌡️', dls: 890,
-    driveUrl: 'https://drive.google.com/file/d/1BxiMVs0XRA5nFMdKvBdBZjgmUGDbELpB/view' },
-  { id: 'NO12', title: 'Metabolomics & Secondary Metabolites', dept: 'BOTANY', sem: 4, topic: 'Essential Oils, Alkaloids, Terpenoids, Phenolics, HPLC', date: '29 Mar 2025', pages: 66, icon: '🧪', dls: 640,
-    driveUrl: 'https://drive.google.com/file/d/1BxiMVs0XRA5nFMdKvBdBZjgmUGDbELpB/view' },
-  /* ─── Statistics & Computer Applications Department ─── */
-  { id: 'NO13', title: 'Statistical Methods in Agriculture',   dept: 'STATS',  sem: 1, topic: 'Descriptive Stats, t-test, ANOVA, Correlation, Regression', date: '11 Apr 2025', pages: 95, icon: '📊', dls: 1680,
-    driveUrl: 'https://drive.google.com/file/d/1BxiMVs0XRA5nFMdKvBdBZjgmUGDbELpB/view' },
-  { id: 'NO14', title: 'Design of Experiments',               dept: 'STATS',  sem: 2, topic: 'CRD, RBD, LSD, Factorial Experiments, Split Plot Design', date: '06 Apr 2025', pages: 80, icon: '📐', dls: 1430,
-    driveUrl: 'https://drive.google.com/file/d/1BxiMVs0XRA5nFMdKvBdBZjgmUGDbELpB/view' },
-  { id: 'NO15', title: 'Machine Learning for Agriculture',     dept: 'STATS',  sem: 3, topic: 'Supervised & Unsupervised Learning, ANN, SVM, Random Forest', date: '02 Apr 2025', pages: 110, icon: '🤖', dls: 2900,
-    driveUrl: 'https://drive.google.com/file/d/1BxiMVs0XRA5nFMdKvBdBZjgmUGDbELpB/view' },
-  { id: 'NO16', title: 'R Programming & Data Science',         dept: 'STATS',  sem: 4, topic: 'Data Wrangling, Visualization, ggplot2, Genomic Data Analysis', date: '26 Mar 2025', pages: 98, icon: '📈', dls: 2100,
-    driveUrl: 'https://drive.google.com/file/d/1BxiMVs0XRA5nFMdKvBdBZjgmUGDbELpB/view' }
-];
 
 const GALLERY = [
   { src: 'https://raw.githubusercontent.com/BONGCODER7/biotechnology/refs/heads/main/IMG_20260506_152730594.jpg', caption: 'RPCAU Main Campus, Pusa',             category: 'campus'    },
@@ -407,280 +163,255 @@ function initActiveNav() {
 }
 
 /* ============================================================
-   6. NOTIFICATIONS
+   7. NOTES — semester-wise course library (data: notes-data.js)
+   Everything Notes-related lives in this section.
 ============================================================ */
-const NOTIF_STORAGE_KEY = 'cbsh_read_notifs';
+const NotesLibrary = (() => {
+  const DRIVE_HOSTS = ['drive.google.com', 'docs.google.com', 'drive.usercontent.google.com'];
+  const ROMAN = { 1: 'I', 2: 'II', 3: 'III', 4: 'IV', 5: 'V', 6: 'VI', 7: 'VII', 8: 'VIII' };
+  const state = { sem: 1, category: 'all', stream: 'all', avail: 'all', query: '' };
+  let els = {};
 
-function getRead()       { return lsGet(NOTIF_STORAGE_KEY) || []; }
-function addRead(id)     { const r = getRead(); if (!r.includes(id)) { r.push(id); lsSet(NOTIF_STORAGE_KEY, r); } }
+  /* ── helpers ── */
+  function h(tag, attrs, ...kids) {
+    const el = document.createElement(tag);
+    for (const [k, v] of Object.entries(attrs || {})) {
+      if (v === false || v == null) continue;
+      if (k === 'class') el.className = v;
+      else if (k === 'text') el.textContent = v;
+      else el.setAttribute(k, v === true ? '' : v);
+    }
+    kids.flat().forEach(c => { if (c != null && c !== false) el.append(c.nodeType ? c : document.createTextNode(c)); });
+    return el;
+  }
+  const norm = s => String(s || '').toLowerCase().replace(/\s+/g, ' ').trim();
 
-function updateBadge() {
-  const unread = NOTIFICATIONS.length - getRead().length;
-  const badge  = $('#nav-notif-badge');
-  if (!badge) return;
-  badge.textContent    = unread;
-  badge.style.display  = unread > 0 ? '' : 'none';
-}
+  function validUrl(u) {
+    if (typeof u !== 'string' || !u.trim()) return null;
+    try {
+      const url = new URL(u.trim());
+      return url.protocol === 'https:' && DRIVE_HOSTS.includes(url.hostname) ? u.trim() : null;
+    } catch { return null; }
+  }
+  const resAvailable = r => r.available !== false && !!validUrl(r.driveUrl);
 
-function renderNotifications(filter = 'all') {
-  const grid = $('#notif-grid');
-  const read = getRead();
-  const list = filter === 'all' ? NOTIFICATIONS : NOTIFICATIONS.filter(n => n.category === filter);
+  /* availability: 'available' | 'partial' | 'soon' (derived from configured resources only) */
+  function statusOf(c) {
+    const total = c.resources.length;
+    const ok = c.resources.filter(resAvailable).length;
+    if (ok === 0) return 'soon';
+    return ok < total ? 'partial' : 'available';
+  }
+  const STATUS_LABEL = { available: 'Notes available', partial: 'Partially available', soon: 'Notes coming soon' };
 
-  grid.innerHTML = list.map(n => `
-    <article class="notif-card reveal ${read.includes(n.id) ? 'is-read' : ''}"
-      data-category="${n.category}" data-id="${n.id}"
-      role="listitem" tabindex="0" aria-label="${n.title}">
-      <div class="notif-header">
-        <span class="notif-tag notif-tag--${n.category}">
-          ${n.category.charAt(0).toUpperCase() + n.category.slice(1)}
-        </span>
-        <span class="notif-date">${n.date}</span>
-      </div>
-      <h3 class="notif-title">${n.title}</h3>
-      <p class="notif-excerpt">${n.excerpt}</p>
-      <span class="notif-more" aria-hidden="true">Read More →</span>
-    </article>`).join('');
+  function syllabusText(c) {
+    return (c.syllabus || []).map(e => [e.title, ...(e.objectives || []), ...(e.theory || []), ...(e.practical || [])].join(' ')).join(' ');
+  }
 
-  $$('.notif-card', grid).forEach(card => {
-    const open = () => openNotifModal(card.dataset.id);
-    card.addEventListener('click', open);
-    card.addEventListener('keydown', e => (e.key === 'Enter' || e.key === ' ') && open());
-  });
+  function haystack(c) {
+    const sem = ROMAN[c.semester];
+    return norm([
+      c.title, (c.alternatives || []).join(' '), c.note, c.phase, NOTES_CATEGORIES[c.category],
+      c.electiveStream ? NOTES_STREAMS[c.electiveStream] : '',
+      `semester ${c.semester} sem ${c.semester} semester ${sem} sem ${sem} year ${c.academicYear}`,
+      c.code || '', syllabusText(c), c.resources.map(r => `${r.title} ${NOTES_RESOURCE_TYPES[r.type] || ''}`).join(' ')
+    ].join(' '));
+  }
+  let INDEX = [];
 
-  triggerReveal();
-}
+  function filtered() {
+    const tokens = norm(state.query).split(' ').filter(Boolean);
+    return INDEX.filter(({ c, hay }) => {
+      if (state.sem !== 'all' && c.semester !== state.sem) return false;
+      if (state.category !== 'all' && c.category !== state.category) return false;
+      if (state.stream !== 'all' && c.electiveStream !== state.stream) return false;
+      if (state.avail === 'available' && statusOf(c) === 'soon') return false;
+      if (state.avail === 'soon' && statusOf(c) !== 'soon') return false;
+      return tokens.every(t => hay.includes(t));
+    }).map(x => x.c);
+  }
 
-function openNotifModal(id) {
-  const n   = NOTIFICATIONS.find(x => x.id === id);
-  if (!n) return;
-  const read = getRead();
+  /* ── rendering ── */
+  function resourceItem(c, r) {
+    const url = resAvailable(r) ? validUrl(r.driveUrl) : null;
+    const meta = [NOTES_RESOURCE_TYPES[r.type] || NOTES_RESOURCE_TYPES.other, r.format].filter(Boolean).join(' · ');
+    return h('li', { class: 'nl-res' },
+      h('div', { class: 'nl-res-info' },
+        h('span', { class: 'nl-res-title', text: r.title }),
+        h('span', { class: 'nl-res-meta', text: meta }),
+        r.description ? h('span', { class: 'nl-res-desc', text: r.description }) : null),
+      url
+        ? h('a', { class: 'nl-btn nl-btn--sm', href: url, target: '_blank', rel: 'noopener noreferrer',
+            'aria-label': `Open ${r.title} for ${c.title} in Google Drive (opens in a new tab)` }, 'Open in Drive ↗')
+        : h('span', { class: 'nl-soon-tag', text: 'Coming soon' }));
+  }
 
-  $('#notif-modal-tag').textContent       = n.category.charAt(0).toUpperCase() + n.category.slice(1);
-  $('#notif-modal-tag').className         = `modal-tag notif-tag notif-tag--${n.category}`;
-  $('#notif-modal-title').textContent     = n.title;
-  $('#notif-modal-meta').textContent      = `Posted on ${n.date}`;
-  $('#notif-modal-body').innerHTML        = n.body;
+  function summaryOf(c) {
+    const e = c.syllabus && c.syllabus.length === 1 ? c.syllabus[0] : null;
+    return e && e.objectives && e.objectives[0] ? `Aim: ${e.objectives[0]}` : '';
+  }
 
-  const btn = $('#notif-modal-read-btn');
-  if (read.includes(id)) {
-    btn.textContent = '✅ Already Marked as Read';
-    btn.disabled = true;
-  } else {
-    btn.textContent = 'Mark as Read';
-    btn.disabled = false;
-    btn.onclick = () => {
-      addRead(id);
-      btn.textContent = '✅ Marked as Read';
-      btn.disabled = true;
-      const card = $(`.notif-card[data-id="${id}"]`);
-      if (card) card.classList.add('is-read');
-      updateBadge();
+  function courseCard(c) {
+    const st = statusOf(c);
+    const avail = c.resources.filter(resAvailable);
+    const panelId = `nl-panel-${c.id}`;
+    const badges = [h('span', { class: 'nl-badge', text: NOTES_CATEGORIES[c.category] })];
+    if (c.electiveStream) badges.push(h('span', { class: 'nl-badge nl-badge--stream', text: NOTES_STREAMS[c.electiveStream] }));
+    if (c.alternatives) badges.push(h('span', { class: 'nl-badge nl-badge--alt', text: 'Choose one' }));
+    if (c.kind === 'nongradial') badges.push(h('span', { class: 'nl-badge nl-badge--alt', text: 'Non-gradial' }));
+    if (c.phase) badges.push(h('span', { class: 'nl-badge nl-badge--alt', text: c.phase }));
+
+    const meta = [`Semester ${ROMAN[c.semester]}`, `Year ${c.academicYear}`, `${c.kind === 'ready' || c.kind === 'internship' ? 'Credit hours' : 'Credits'}: ${c.credits}`];
+
+    /* actions */
+    let actions;
+    if (st === 'soon') {
+      actions = c.kind === 'ready' ? h('p', { class: 'nl-soon', text: 'Programme information — no notes configured.' }) : null;
+    } else if (c.resources.length === 1) {
+      actions = h('a', { class: 'nl-btn', href: validUrl(avail[0].driveUrl), target: '_blank', rel: 'noopener noreferrer',
+        'aria-label': `Open ${avail[0].title} for ${c.title} in Google Drive (opens in a new tab)` }, 'Open notes in Drive ↗');
+    } else {
+      const toggle = h('button', { type: 'button', class: 'nl-btn nl-btn--ghost', 'aria-expanded': 'false', 'aria-controls': panelId },
+        `View materials (${avail.length}/${c.resources.length} available)`);
+      const panel = h('ul', { class: 'nl-res-list', id: panelId, hidden: true }, c.resources.map(r => resourceItem(c, r)));
+      toggle.addEventListener('click', () => {
+        const open = toggle.getAttribute('aria-expanded') === 'true';
+        toggle.setAttribute('aria-expanded', String(!open));
+        panel.hidden = open;
+      });
+      actions = h('div', { class: 'nl-multi' }, toggle, panel);
+    }
+
+    return h('article', { class: `nl-card reveal nl-card--${c.kind}`, role: 'listitem' },
+      h('div', { class: 'nl-badges' }, badges),
+      h('h4', { class: 'nl-title', text: c.title }),
+      h('p', { class: 'nl-meta', text: meta.join(' · ') }),
+      c.alternatives ? h('ul', { class: 'nl-alt' }, c.alternatives.map(a => h('li', { text: a }))) : null,
+      c.activities ? h('ul', { class: 'nl-alt' }, c.activities.map(a => h('li', { text: a }))) : null,
+      c.note ? h('p', { class: 'nl-note', text: c.note }) : null,
+      summaryOf(c) ? h('p', { class: 'nl-summary', text: summaryOf(c) }) : null,
+      syllabusBlock(c),
+      h('span', { class: `nl-status nl-status--${st}`, text: STATUS_LABEL[st] }),
+      actions);
+  }
+
+  function syllabusBlock(c) {
+    const part = (label, body) => body ? h('div', { class: 'nl-syl-part' }, h('h5', { text: label }), body) : null;
+    const ul = a => a && a.length ? h('ul', {}, a.map(x => h('li', { text: x }))) : null;
+    const ps = a => a && a.length ? h('div', {}, a.map(x => h('p', { text: x }))) : null;
+    const ol = a => a && a.length ? h('ol', {}, a.map(x => h('li', { text: x }))) : null;
+    let body;
+    if (c.syllabus) {
+      body = c.syllabus.map(e => h('div', { class: 'nl-syl-entry' },
+        e.title ? h('h5', { class: 'nl-syl-entry-title', text: e.title }) : null,
+        part('Objectives', ul(e.objectives)), part('Theory', ps(e.theory)),
+        part('Practical', ps(e.practical)), part('Suggested readings', ol(e.readings))));
+    } else if (c.info) {
+      body = [h('div', { class: 'nl-syl-entry' }, ps(c.info))];
+    } else return null;
+    return h('details', { class: 'nl-syl' },
+      h('summary', { text: c.syllabus ? 'View official syllabus' : 'Programme details' }),
+      h('div', { class: 'nl-syl-body' }, body,
+        h('p', { class: 'nl-syl-src', text: 'Source: ICAR Sixth Deans’ Committee Report, B.Tech. (Biotechnology).' })));
+  }
+
+  function groupsFor(list) {
+    const groups = [];
+    const push = (key, title, sub, items) => { if (items.length) groups.push({ key, title, sub, items }); };
+    if (state.sem === 'all') {
+      NOTES_SEMESTERS.forEach(s => push(`s${s.n}`, `Semester ${s.roman}`, `Year ${s.year} · ${s.label}`, list.filter(c => c.semester === s.n)));
+    } else if (state.sem === 7) {
+      Object.keys(NOTES_STREAMS).forEach(k => push(k, NOTES_STREAMS[k], 'Semester VII elective stream — students choose one stream.', list.filter(c => c.electiveStream === k)));
+    } else {
+      push('courses', 'Courses', null, list.filter(c => ['graded', 'sec'].includes(c.kind)));
+      push('activities', 'Programme activities', 'Non-gradial activities, internships and Student READY are not conventional subjects.', list.filter(c => !['graded', 'sec'].includes(c.kind)));
+    }
+    return groups;
+  }
+
+  function render() {
+    const list = filtered();
+    const frag = document.createDocumentFragment();
+    groupsFor(list).forEach(g => {
+      const grid = h('div', { class: 'notes-grid nl-grid', role: 'list', 'aria-label': g.title }, g.items.map(courseCard));
+      frag.append(h('section', { class: 'nl-group' },
+        state.sem === 'all' || state.sem === 7 || g.key === 'activities' ? h('div', { class: 'nl-group-head' },
+          h('h3', { class: 'nl-group-title', text: g.title }), g.sub ? h('p', { class: 'nl-group-sub', text: g.sub }) : null) : null,
+        grid));
+    });
+    els.out.replaceChildren(frag);
+    els.empty.hidden = list.length > 0;
+    els.count.textContent = `${list.length} ${list.length === 1 ? 'course' : 'courses'} shown`;
+
+    /* semester context + active states */
+    const s = NOTES_SEMESTERS.find(x => x.n === state.sem);
+    els.context.textContent = s ? `Semester ${s.roman} · Year ${s.year} · ${s.label} · Credit hours: ${s.credits}` : 'All eight semesters · B.Tech. (Biotechnology)';
+    els.semBtns.forEach(b => b.setAttribute('aria-selected', String(String(state.sem) === b.dataset.sem)));
+    els.streamWrap.hidden = !(state.sem === 7 || state.sem === 'all');
+    els.clear.hidden = !(state.category !== 'all' || state.stream !== 'all' || state.avail !== 'all' || state.query.trim());
+    if (typeof triggerReveal === 'function') triggerReveal();
+  }
+
+  function clearFilters() {
+    Object.assign(state, { category: 'all', stream: 'all', avail: 'all', query: '' });
+    els.search.value = els.category.value = els.stream.value = els.avail.value = '';
+    els.category.value = els.stream.value = els.avail.value = 'all';
+    render();
+  }
+
+  function setSem(v) {
+    state.sem = v === 'all' ? 'all' : Number(v);
+    if (!(state.sem === 7 || state.sem === 'all')) { state.stream = 'all'; els.stream.value = 'all'; }
+    render();
+  }
+
+  function init() {
+    const root = $('#notes-library');
+    if (!root) return;
+    if (typeof NOTES_COURSES === 'undefined') {            /* notes-data.js missing — never block the rest of the site */
+      root.replaceChildren(h('p', { class: 'nl-count', text: 'Notes library is temporarily unavailable. Please try again later.' }));
+      console.warn('notes-data.js not loaded — upload it next to index.html.');
+      return;
+    }
+    INDEX = NOTES_COURSES.map(c => ({ c, hay: haystack(c) }));
+    els = {
+      out: $('#notes-grid'), empty: $('#notes-empty'), count: $('#notes-count'), context: $('#notes-context'),
+      search: $('#notes-search'), category: $('#notes-category'), stream: $('#notes-stream'),
+      streamWrap: $('#notes-stream-wrap'), avail: $('#notes-avail'), clear: $('#notes-clear'),
+      nav: $('#notes-sem-nav')
     };
-  }
 
-  openModal('notif-modal');
-}
-
-function initNotifications() {
-  renderNotifications();
-  updateBadge();
-
-  $$('[data-filter]').forEach(btn => {
-    btn.addEventListener('click', () => {
-      $$('[data-filter]').forEach(b => { b.classList.remove('active'); b.setAttribute('aria-selected', 'false'); });
-      btn.classList.add('active');
-      btn.setAttribute('aria-selected', 'true');
-      renderNotifications(btn.dataset.filter);
+    /* semester navigator (built from data) */
+    [1, 2, 3, 4].forEach(y => {
+      const grp = h('div', { class: 'nl-year', role: 'group', 'aria-label': `Year ${y}` },
+        h('span', { class: 'nl-year-label', text: `Year ${y}` }),
+        h('div', { class: 'nl-year-btns' }, NOTES_SEMESTERS.filter(s => s.year === y).map(s =>
+          h('button', { type: 'button', class: 'nl-sem-btn', role: 'tab', 'data-sem': s.n, 'aria-selected': 'false' },
+            h('span', { class: 'nl-sem-num', text: `Semester ${s.roman}` }),
+            h('span', { class: 'nl-sem-label', text: s.label })))));
+      els.nav.append(grp);
     });
-  });
+    els.semBtns = $$('.nl-sem-btn', els.nav);
+    els.semBtns.forEach(b => b.addEventListener('click', () => setSem(b.dataset.sem)));
+    $('#notes-sem-all').addEventListener('click', () => setSem('all'));
 
-  /* Modal close wiring */
-  $('#notif-modal-close').addEventListener('click',    () => closeModal('notif-modal'));
-  $('#notif-modal-backdrop').addEventListener('click',  () => closeModal('notif-modal'));
-}
+    /* filter option lists */
+    Object.entries(NOTES_CATEGORIES).forEach(([k, v]) => els.category.append(h('option', { value: k, text: v })));
+    Object.entries(NOTES_STREAMS).forEach(([k, v]) => els.stream.append(h('option', { value: k, text: v })));
 
-/* ============================================================
-   7. NOTES
-============================================================ */
-const NOTES_FAV_KEY = 'cbsh_fav_notes';
+    els.search.addEventListener('input', () => { state.query = els.search.value; render(); });
+    els.category.addEventListener('change', () => { state.category = els.category.value; render(); });
+    els.stream.addEventListener('change', () => { state.stream = els.stream.value; render(); });
+    els.avail.addEventListener('change', () => { state.avail = els.avail.value; render(); });
+    els.clear.addEventListener('click', clearFilters);
+    $('#notes-empty-clear').addEventListener('click', clearFilters);
 
-function getFavs()          { return lsGet(NOTES_FAV_KEY) || []; }
-function toggleFav(id)      {
-  const favs = getFavs();
-  const idx  = favs.indexOf(id);
-  idx === -1 ? favs.push(id) : favs.splice(idx, 1);
-  lsSet(NOTES_FAV_KEY, favs);
-}
-
-function renderNotes(search = '', sem = 'all', dept = 'all') {
-  const grid  = $('#notes-grid');
-  const empty = $('#notes-empty');
-  const favs  = getFavs();
-
-  let list = NOTES;
-  if (sem  !== 'all') list = list.filter(n => n.sem === parseInt(sem));
-  if (dept !== 'all') list = list.filter(n => n.dept === dept);
-  if (search) {
-    const q = search.toLowerCase();
-    list = list.filter(n => n.title.toLowerCase().includes(q) || n.topic.toLowerCase().includes(q) || n.dept.toLowerCase().includes(q));
+    render();
   }
+  return { init };
+})();
 
-  if (list.length === 0) {
-    grid.innerHTML = '';
-    empty.hidden = false;
-    return;
-  }
-  empty.hidden = true;
-
-  grid.innerHTML = list.map(n => `
-    <article class="note-card reveal ${favs.includes(n.id) ? 'is-faved' : ''}"
-      data-id="${n.id}" role="listitem" tabindex="0" aria-label="Notes for ${n.title}">
-      <div class="note-card-top">
-        <span class="note-dept-pill">${n.dept}</span>
-        <button class="fav-btn" data-note-id="${n.id}" aria-label="Toggle favourite" title="Save as favourite">
-          <svg width="18" height="18" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="inherit">
-            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
-          </svg>
-        </button>
-      </div>
-      <div class="note-icon">${n.icon}</div>
-      <h3 class="note-title">${n.title}</h3>
-      <p class="note-topic">${n.topic}</p>
-      <div class="note-footer">
-        <span class="note-sem">Semester ${n.sem}</span>
-        <span class="note-date">${n.date}</span>
-      </div>
-      <button class="note-dl-btn" data-note-id="${n.id}" aria-label="Download ${n.title} PDF">
-        ⬇ Download PDF
-      </button>
-    </article>`).join('');
-
-  /* Events */
-  $$('.note-card', grid).forEach(card => {
-    card.addEventListener('click', e => {
-      if (!e.target.closest('.fav-btn') && !e.target.closest('.note-dl-btn'))
-        openNotesModal(card.dataset.id);
-    });
-    card.addEventListener('keydown', e => {
-      if (e.key === 'Enter') openNotesModal(card.dataset.id);
-    });
-  });
-
-  $$('.fav-btn', grid).forEach(btn => {
-    btn.addEventListener('click', e => {
-      e.stopPropagation();
-      toggleFav(btn.dataset.noteId);
-      const card = btn.closest('.note-card');
-      card.classList.toggle('is-faved');
-    });
-  });
-
-  $$('.note-dl-btn', grid).forEach(btn => {
-    btn.addEventListener('click', e => { e.stopPropagation(); openNotesModal(btn.dataset.noteId, true); });
-  });
-
-  triggerReveal();
-}
-
-function openNotesModal(id, autoDownload = false) {
-  const n = NOTES.find(x => x.id === id);
-  if (!n) return;
-
-  $('#notes-modal-dept').textContent  = n.dept;
-  $('#notes-modal-title').textContent = n.title;
-  $('#notes-modal-meta').textContent  = `Semester ${n.sem} · Uploaded ${n.date} · ${n.dls.toLocaleString()} downloads`;
-  $('#notes-modal-pages').textContent = `Pages: ${n.pages}`;
-  $('#pdf-topbar-title').textContent  = `📄 ${n.title} — Module 1 Preview`;
-
-  $('#notes-modal-content').innerHTML = `
-    <h4>Module 1 — Introduction to ${n.title}</h4>
-    <p>This module establishes the fundamental concepts and theoretical framework for <strong>${n.title}</strong>.
-    It is designed for M.Sc.(Ag.) students of the ${n.dept} department, CBSH, RPCAU Pusa.</p>
-    <h4>Topics Covered in This Module</h4>
-    <ul>
-      ${n.topic.split(',').map(t => `<li>${t.trim()}</li>`).join('')}
-      <li>Numerical Problems &amp; Case Studies</li>
-      <li>Previous Year University Examination Questions</li>
-    </ul>
-    <h4>Module 2 — Advanced Concepts</h4>
-    <p>Building on Module 1, this section dives deeper into analytical methods, problem-solving
-    techniques, and current research applications relevant to agricultural sciences.</p>
-    <h4>Key Learning Outcomes</h4>
-    <ul>
-      <li>Understand core principles and their relevance to agri-science</li>
-      <li>Apply knowledge to experimental and field conditions</li>
-      <li>Analyze data and interpret results using standard methods</li>
-      <li>Relate concepts to ongoing research at RPCAU &amp; ICAR institutions</li>
-    </ul>
-    <p style="color:var(--gold);font-style:italic;font-size:.82rem;margin-top:1.5rem;">
-      📌 This is a preview. The full PDF contains ${n.pages} pages covering all modules as per RPCAU syllabus.
-    </p>`;
-
-  const dlBtn = $('#notes-modal-dl-btn');
-  dlBtn.onclick = () => openDriveDownload(dlBtn, n);
-
-  openModal('notes-modal');
-  if (autoDownload) setTimeout(() => fakeDownload(dlBtn, n.title), 300);
-}
-
-/* Google Drive download — opens the drive link directly */
-function openDriveDownload(btn, note) {
-  if (!note.driveUrl || note.driveUrl === '') {
-    showToast('No file linked yet. Please contact the department.');
-    return;
-  }
-
-  /* Convert /view link → direct download link */
-  let url = note.driveUrl;
-  const matchId = url.match(/\/file\/d\/([^/]+)/);
-  if (matchId) {
-    url = 'https://drive.google.com/uc?export=download&id=' + matchId[1];
-  }
-
-  /* Visual feedback */
-  const orig = btn.innerHTML;
-  btn.innerHTML = '⏳ Opening Drive…';
-  btn.disabled = true;
-
-  /* Open in new tab */
-  setTimeout(() => {
-    window.open(url, '_blank', 'noopener,noreferrer');
-    btn.innerHTML = '✅ Opened in Drive!';
-    showToast('📂 File opened in Google Drive');
-    setTimeout(() => { btn.innerHTML = orig; btn.disabled = false; }, 3000);
-  }, 600);
-}
-
-/* Toast notification helper */
-function showToast(msg) {
-  let toast = document.getElementById('site-toast');
-  if (!toast) {
-    toast = document.createElement('div');
-    toast.id = 'site-toast';
-    toast.setAttribute('role', 'status');
-    toast.setAttribute('aria-live', 'polite');
-    document.body.appendChild(toast);
-  }
-  toast.textContent = msg;
-  toast.classList.add('show');
-  clearTimeout(toast._timer);
-  toast._timer = setTimeout(() => toast.classList.remove('show'), 3500);
-}
-
-function initNotes() {
-  renderNotes();
-  const search = $('#notes-search');
-  const sem    = $('#notes-semester');
-  const dept   = $('#notes-dept');
-  const run    = () => renderNotes(search.value.trim(), sem.value, dept.value);
-  search.addEventListener('input',  run);
-  sem.addEventListener('change',    run);
-  dept.addEventListener('change',   run);
-
-  $('#notes-modal-close').addEventListener('click',   () => closeModal('notes-modal'));
-  $('#notes-modal-backdrop').addEventListener('click', () => closeModal('notes-modal'));
-}
+function initNotes() { NotesLibrary.init(); }
 
 /* ============================================================
    8. GALLERY
@@ -884,11 +615,7 @@ function closeModal(id) {
 /* Global ESC to close modals */
 document.addEventListener('keydown', e => {
   if (e.key !== 'Escape') return;
-  ['notif-modal', 'notes-modal'].forEach(id => {
-    const m = $(`#${id}`);
-    if (m && !m.hidden) closeModal(id);
-  });
-  if (!$('#lightbox').hidden) closeLightbox();
+    if (!$('#lightbox').hidden) closeLightbox();
 });
 
 /* ============================================================
@@ -968,16 +695,8 @@ function initDarkMode() {
    16. INIT
 ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
-  initLoader();
-  initDarkMode();
-  initNavbar();
-  initActiveNav();
-  initNotifications();
-  initNotes();
-  initGallery();
-  initFaculty();
-  initCounters();
-  initContactForm();
-  initBackToTop();
-  initReveal();
+  /* Each init runs on its own so one failing section can never block the rest of the site (or the loader). */
+  [initLoader, initDarkMode, initNavbar, initActiveNav, initNotes,
+   initGallery, initFaculty, initCounters, initContactForm, initBackToTop, initReveal]
+    .forEach(fn => { try { fn(); } catch (err) { console.error(`${fn.name} failed:`, err); } });
 });
