@@ -78,7 +78,7 @@ const NOTES_COURSES = [
   nc('molecular-biology-sem1', 'Molecular Biology', 1, 'major', '3 (3+0)', {
     resources: [
       { id: 'molecular-biology-notes', title: 'Molecular Biology — Fundamentals', type: 'notes', format: 'PDF',
-        driveUrl: 'https://drive.google.com/file/d/1lAuyBXS68bPR6Gx2QEEDYyH35vEdKIuA/view?usp=drive_link' }
+        driveUrl: 'https://drive.google.com/drive/folders/1jVygQ1HRIKlzjRyOGGZbfUqAZziZom2q?usp=sharing' }
     ]
   }),
   nc('introductory-cell-biology', 'Introductory Cell Biology', 1, 'major', '3 (3+0)', {
